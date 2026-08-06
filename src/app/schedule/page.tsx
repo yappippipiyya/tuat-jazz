@@ -1,0 +1,76 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
+
+export const metadata: Metadata = {
+  title: "Schedule",
+  description: "活動日程のご案内。毎週水曜・土曜のセッションと年間の主なイベントをご紹介します。",
+};
+
+const events = [
+  { month: "5月", name: "新歓定期演奏会" },
+  { month: "7月", name: "学祭（工学部キャンパス）" },
+  { month: "9月", name: "夏合宿" },
+  { month: "11月", name: "学祭（農学部キャンパス）" },
+  { month: "12月", name: "クリスマス定期演奏会" },
+  { month: "3月", name: "追い出し定期演奏会" },
+];
+
+export default function SchedulePage() {
+  return (
+    <>
+      <PageHeader
+        eyebrow="SCHEDULE"
+        title="活動日程"
+        description="通常の活動は毎週水曜日・土曜日。その場にいるメンバーでセッションを行っています。"
+      />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+          毎週水・土はセッション
+        </h2>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+          「セッション」とは、その場に集まったメンバーで即興的にバンドを組み、演奏することです。曲や担当パートはその場の流れで決まるので、決まったバンドがなくても参加できます。楽器経験が浅くても、先輩たちがサポートするので安心してください。
+        </p>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+          見学だけでも大歓迎です。当日その場にいるメンバーで自由に演奏を楽しんでいるので、まずは気軽に部室をのぞいてみてください。詳しい日時や場所は公式SNSでお知らせしています。
+        </p>
+        <Link
+          href="/contact"
+          className="mt-6 inline-block text-sm font-medium text-accent hover:underline"
+        >
+          見学したい方はこちら →
+        </Link>
+      </section>
+
+      <section className="border-t border-border/80 bg-surface">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+            年間の主なイベント
+          </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+            通常のセッションに加えて、年間を通して以下のようなイベントがあります。各演奏会ではバンドを組んで演奏することができます。
+          </p>
+
+          <div className="mt-10 divide-y divide-border/80 border-y border-border/80">
+            {events.map((e) => (
+              <div
+                key={e.month}
+                className="flex items-baseline gap-6 py-5"
+              >
+                <span className="w-16 shrink-0 font-display text-xl text-accent">
+                  {e.month}
+                </span>
+                <span className="text-sm text-foreground sm:text-base">{e.name}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-sm text-muted">
+            ※ このほかにも、ライブハウスでの演奏や他大学のジャズ研との合同セッションなどが不定期に開催されます。
+          </p>
+        </div>
+      </section>
+    </>
+  );
+}
