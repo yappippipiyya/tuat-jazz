@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 東京農工大学モダンジャズ研究会 公式サイト
 
-## Getting Started
+キャッチコピー「ハモればハッケン、揃えばコウケン」
 
-First, run the development server:
+## 技術スタック
+
+- [Next.js](https://nextjs.org) 16 (App Router)
+- [Tailwind CSS](https://tailwindcss.com) v4
+- TypeScript
+- パッケージ管理は [pnpm](https://pnpm.io) を使用（npm/yarnは使わない）
+- デプロイ先: [Vercel](https://vercel.com)
+
+## セットアップ
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) で確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> **Note:** `pnpm dev` は Turbopack ではなく `next dev --webpack` を実行します。この環境では
+> Turbopack 版 `next dev` が `next/font/google`（本文フォントの Noto Sans JP）を解決できず、
+> 全ルートが 500 エラーになる不具合があるための回避策です。`pnpm build`（本番ビルド）は
+> Turbopack のままで問題なく動作します。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 主なコマンド
 
-## Learn More
+```bash
+pnpm dev     # 開発サーバー起動（--webpack）
+pnpm build   # 本番ビルド（Turbopack）
+pnpm start   # ビルド済みアプリの起動
+pnpm lint    # ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## ページ構成
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/` — トップページ（ヒーロー、活動内容、セッション案内、年間イベント）
+- `/schedule` — 活動日程（毎週水・土のセッション、年間イベント一覧）
+- `/access` — アクセス（小金井キャンパス・府中キャンパスの地図）
+- `/link` — 他大学ジャズ研・ライブハウスへのリンク集
+- `/contact` — 連絡先（X / Instagram / LINE。問い合わせフォームは設置していません）
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ディレクトリ構成（抜粋）
 
-## Deploy on Vercel
+```
+src/
+  app/            各ページ（App Router）
+  components/     Header, Footer, Reveal（スクロール表示アニメーション）など
+  lib/site.ts     サークル名・SNSリンクなどのサイト共通設定
+public/images/    ヒーロー画像・活動写真・地図・QRコードなど
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+サイト名やSNSリンクなど共通情報は `src/lib/site.ts` にまとまっているので、変更する場合はここを編集してください。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## デプロイ
+
+[Vercel](https://vercel.com) にこのリポジトリを連携すれば、`main` ブランチへの push で自動ビルド・デプロイされます（フレームワークはNext.jsとして自動検出されます）。

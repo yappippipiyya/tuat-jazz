@@ -10,9 +10,14 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
+  // Close the menu on navigation. Adjusted during render (React's recommended
+  // pattern for resetting state when a value changes) rather than in an
+  // effect, to avoid an extra render pass.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   // iOS Safari ignores `overflow:hidden` on body for rubber-band scroll,
   // so pin the body in place with `position:fixed` and restore the scroll
