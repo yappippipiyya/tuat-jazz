@@ -10,34 +10,13 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // Close the menu on navigation. Adjusted during render (React's recommended
-  // pattern for resetting state when a value changes) rather than in an
-  // effect, to avoid an extra render pass.
-  const [lastPathname, setLastPathname] = useState(pathname);
-  if (pathname !== lastPathname) {
-    setLastPathname(pathname);
-    setOpen(false);
-  }
-
-  // iOS Safari ignores `overflow:hidden` on body for rubber-band scroll,
-  // so pin the body in place with `position:fixed` and restore the scroll
-  // position on close instead.
+  // Freeze background scroll while the menu is open. No scroll-position
+  // math involved, so there's nothing to restore (and nothing to get wrong)
+  // when the menu closes — whether by link, backdrop tap, or toggle.
   useEffect(() => {
-    if (!open) return;
-
-    const scrollY = window.scrollY;
-    const { body } = document;
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      body.style.position = "";
-      body.style.top = "";
-      body.style.left = "";
-      body.style.right = "";
-      window.scrollTo(0, scrollY);
+      document.body.style.overflow = "";
     };
   }, [open]);
 
@@ -104,34 +83,31 @@ export default function Header() {
         </div>
 
         {/* Solid (non-blurred) panel — safe to nest inside the sticky header. */}
-        <nav
-          className={`absolute inset-x-0 top-full overflow-hidden border-t border-border/80 bg-background transition-all duration-300 ease-out md:hidden ${
-            open ? "max-h-[calc(100dvh-4rem)] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <ul className="mx-auto flex max-w-6xl flex-col divide-y divide-border/80 px-4 sm:px-6">
-            {navItems.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    tabIndex={open ? 0 : -1}
-                    className={`block py-4 text-base tracking-wide ${
-                      active ? "text-accent" : "text-foreground/85"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        {open && (
+          <nav className="absolute inset-x-0 top-full border-t border-border/80 bg-background md:hidden">
+            <ul className="mx-auto flex max-w-6xl flex-col divide-y divide-border/80 px-4 sm:px-6">
+              {navItems.map((item) => {
+                const active =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`block py-4 text-base tracking-wide ${
+                        active ? "text-accent" : "text-foreground/85"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
       </header>
 
       {/*
@@ -140,13 +116,13 @@ export default function Header() {
         element nested under a position:sticky ancestor, which makes
         backdrop-filter fail to render there — so it can't live inside header.
       */}
-      <div
-        aria-hidden
-        onClick={() => setOpen(false)}
-        className={`fixed inset-x-0 top-16 z-40 h-[calc(100dvh-4rem)] bg-background/50 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      />
+      {open && (
+        <div
+          aria-hidden
+          onClick={() => setOpen(false)}
+          className="fixed inset-x-0 top-16 bottom-0 z-40 bg-background/50 backdrop-blur-sm md:hidden"
+        />
+      )}
     </>
   );
 }
