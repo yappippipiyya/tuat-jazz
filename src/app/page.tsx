@@ -43,19 +43,23 @@ export default function Home() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-14 sm:px-6 sm:pb-20">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-28 sm:px-6 sm:pb-20">
           <p className="text-sm tracking-[0.3em] text-amber-100/80">
             TUAT MODERN JAZZ CLUB
           </p>
-          <h1 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
-            {siteConfig.catchphrase}
+          <h1 className="mt-4 text-[40px] font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+            {siteConfig.catchphrase.split("、").map((line, i) => (
+              <span key={line} className="block">
+                {i === 0 ? `${line}、` : line}
+              </span>
+            ))}
           </h1>
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
+          <p className="mt-5 mr-10 max-w-xl text-base leading-relaxed text-white/80 sm:text-base">
             {siteConfig.name}は、楽器経験を問わず音楽が好きな仲間が集まってジャズを演奏するサークルです。
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/about"
+              href="#features"
               className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-black transition-opacity hover:opacity-90"
             >
               ジャズ研について
@@ -70,7 +74,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           {features.map((f) => (
             <div key={f.title} className="border-l-2 border-accent/60 pl-6">
