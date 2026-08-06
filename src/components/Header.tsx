@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -15,8 +16,15 @@ export default function Header() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="text-lg font-semibold tracking-wide text-foreground"
+          className="flex items-center gap-2 text-lg font-semibold tracking-wide text-foreground"
         >
+          <Image
+            src="/images/favicon.png"
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-full object-cover"
+          />
           {siteConfig.shortName}
         </Link>
 
