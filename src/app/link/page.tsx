@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Link",
@@ -49,17 +50,19 @@ export default function LinkPage() {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-          他大学ジャズ研
-        </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-          合同セッションなどで交流のあるジャズ研究会です。ジャズ研といえばTwitterなので(偏見)、Twitterアカウントを掲載しておきます。
-        </p>
-        <LinkList items={jazzClubs} />
+        <Reveal>
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+            他大学ジャズ研
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+            合同セッションなどで交流のあるジャズ研究会です。ジャズ研といえばTwitterなので(偏見)、Twitterアカウントを掲載しておきます。
+          </p>
+          <LinkList items={jazzClubs} />
+        </Reveal>
       </section>
 
       <section className="border-t border-border/80 bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <Reveal className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             ライブ・セッションハウス
           </h2>
@@ -67,7 +70,7 @@ export default function LinkPage() {
             定期演奏会などでお世話になっています。
           </p>
           <LinkList items={liveHouses} />
-        </div>
+        </Reveal>
       </section>
     </>
   );

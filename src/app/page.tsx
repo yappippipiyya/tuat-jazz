@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 import { siteConfig } from "@/lib/site";
 
 const features = [
@@ -76,17 +77,17 @@ export default function Home() {
 
       <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-          {features.map((f) => (
-            <div key={f.title} className="border-l-2 border-accent/60 pl-6">
+          {features.map((f, i) => (
+            <Reveal key={f.title} delay={i * 100} className="border-l-2 border-accent/60 pl-6">
               <h2 className="text-xl font-semibold text-foreground">{f.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted">{f.body}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="border-y border-border/80 bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <Reveal className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             セッションは毎週水・土
           </h2>
@@ -99,19 +100,21 @@ export default function Home() {
           >
             活動日程を詳しく見る →
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-          年間の主なイベント
-        </h2>
+        <Reveal>
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+            年間の主なイベント
+          </h2>
+        </Reveal>
         <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
-          {events.map((e) => (
-            <div key={e.month}>
+          {events.map((e, i) => (
+            <Reveal key={e.month} delay={i * 80}>
               <p className="text-lg font-semibold text-accent">{e.month}</p>
               <p className="mt-1 text-sm text-muted">{e.name}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <p className="mt-8 text-sm text-muted">
@@ -120,7 +123,7 @@ export default function Home() {
       </section>
 
       <section className="border-t border-border/80 bg-surface">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-20 sm:px-6">
+        <Reveal className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-20 sm:px-6">
           <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             見学・体験はSNSからお気軽に
           </h2>
@@ -133,7 +136,7 @@ export default function Home() {
           >
             連絡先を見る
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );
