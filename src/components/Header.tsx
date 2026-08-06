@@ -15,7 +15,7 @@ export default function Header() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="font-display text-lg tracking-wide text-foreground"
+          className="text-lg font-semibold tracking-wide text-foreground"
         >
           {siteConfig.shortName}
         </Link>

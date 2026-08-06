@@ -47,7 +47,7 @@ export default function Home() {
           <p className="text-sm tracking-[0.3em] text-amber-100/80">
             TUAT MODERN JAZZ CLUB
           </p>
-          <h1 className="mt-4 font-display text-3xl leading-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
             {siteConfig.catchphrase}
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
@@ -74,7 +74,7 @@ export default function Home() {
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           {features.map((f) => (
             <div key={f.title} className="border-l-2 border-accent/60 pl-6">
-              <h2 className="font-display text-xl text-foreground">{f.title}</h2>
+              <h2 className="text-xl font-semibold text-foreground">{f.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted">{f.body}</p>
             </div>
           ))}
@@ -83,7 +83,7 @@ export default function Home() {
 
       <section className="border-y border-border/80 bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             セッションは毎週水・土
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
@@ -99,13 +99,13 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
           年間の主なイベント
         </h2>
         <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
           {events.map((e) => (
             <div key={e.month}>
-              <p className="font-display text-lg text-accent">{e.month}</p>
+              <p className="text-lg font-semibold text-accent">{e.month}</p>
               <p className="mt-1 text-sm text-muted">{e.name}</p>
             </div>
           ))}
@@ -117,7 +117,7 @@ export default function Home() {
 
       <section className="border-t border-border/80 bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-20 sm:px-6">
-          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             見学・体験はSNSからお気軽に
           </h2>
           <p className="max-w-xl text-sm leading-relaxed text-muted">

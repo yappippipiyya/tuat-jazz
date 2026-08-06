@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "東京農工大学モダンジャズ研究会",
-  shortName: "農工大ジャズ研",
+  shortName: "TUAT Modern Jazz Club",
   catchphrase: "ハモればハッケン、揃えばコウケン",
   description:
     "東京農工大学モダンジャズ研究会の公式サイト。毎週水・土に部室でセッションを開催中。初心者・経験者・他大学の方も歓迎です。",

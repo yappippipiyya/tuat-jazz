@@ -31,7 +31,7 @@ export default function AccessPage() {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
           小金井キャンパス（工学部）
         </h2>
         <p className="mt-2 text-sm text-muted">〒184-8588 東京都小金井市中町2-24-16</p>
@@ -57,7 +57,7 @@ export default function AccessPage() {
 
       <section className="border-t border-border/80 bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             府中キャンパス（農学部）
           </h2>
           <p className="mt-2 text-sm text-muted">〒183-8509 東京都府中市幸町3-5-8</p>

@@ -26,7 +26,7 @@ export default function SchedulePage() {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
           毎週水・土はセッション
         </h2>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
@@ -45,7 +45,7 @@ export default function SchedulePage() {
 
       <section className="border-t border-border/80 bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             年間の主なイベント
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
@@ -58,7 +58,7 @@ export default function SchedulePage() {
                 key={e.month}
                 className="flex items-baseline gap-6 py-5"
               >
-                <span className="w-16 shrink-0 font-display text-xl text-accent">
+                <span className="w-16 shrink-0 text-xl font-semibold text-accent">
                   {e.month}
                 </span>
                 <span className="text-sm text-foreground sm:text-base">{e.name}</span>

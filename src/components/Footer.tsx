@@ -1,19 +1,39 @@
+import type { SVGProps } from "react";
 import Link from "next/link";
 import { navItems, siteConfig } from "@/lib/site";
 
+function XIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M13.6 10.6 20.4 3h-1.6l-5.9 6.6L8.2 3H3l7.1 10L3 21h1.6l6.2-7 5 7H21l-7.4-10.4Zm-2.2 2.5-.7-1L5 4.3h2.5l4.6 6.4.7 1 6 8.4h-2.5l-4.9-6.9Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
-    <footer className="border-t border-border/80 bg-surface">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-zinc-900 bg-zinc-950">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
-          <p className="font-display text-base text-foreground">
+          <p className="text-base font-semibold text-foreground">
             {siteConfig.name}
           </p>
-          <p className="mt-1 text-sm text-muted">{siteConfig.catchphrase}</p>
+          <p className="mt-2 text-sm text-muted">{siteConfig.catchphrase}</p>
         </div>
 
         <nav>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+          <p className="text-sm font-semibold text-foreground">SITEMAP</p>
+          <ul className="mt-3 flex flex-col gap-2.5 text-sm text-muted">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-accent">
@@ -24,14 +44,37 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <a
-          href={siteConfig.twitterUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-muted transition-colors hover:text-accent"
-        >
-          {siteConfig.twitterHandle}
-        </a>
+        <div>
+          <p className="text-sm font-semibold text-foreground">SNS</p>
+          <ul className="mt-3 flex flex-col gap-2.5 text-sm">
+            <li>
+              <a
+                href={siteConfig.twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted transition-colors hover:text-accent"
+              >
+                <XIcon className="h-4 w-4 shrink-0" />
+                <span>
+                  <span className="text-muted/70">{siteConfig.twitterHandle}</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteConfig.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted transition-colors hover:text-accent"
+              >
+                <InstagramIcon className="h-4 w-4 shrink-0" />
+                <span>
+                  <span className="text-muted/70">{siteConfig.instagramHandle}</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="border-t border-border/80 px-4 py-4 text-center text-xs text-muted sm:px-6">

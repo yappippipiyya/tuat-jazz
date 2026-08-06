@@ -49,7 +49,7 @@ export default function LinkPage() {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
           他大学ジャズ研
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
@@ -60,7 +60,7 @@ export default function LinkPage() {
 
       <section className="border-t border-border/80 bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
             ライブ・セッションハウス
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">

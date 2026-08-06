@@ -11,7 +11,7 @@ export default function PageHeader({
     <div className="border-b border-border/80 bg-surface">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <p className="text-xs tracking-[0.3em] text-accent">{eyebrow}</p>
-        <h1 className="mt-3 font-display text-3xl text-foreground sm:text-4xl">
+        <h1 className="mt-3 text-3xl font-semibold text-foreground sm:text-4xl">
           {title}
         </h1>
         {description && (
