@@ -6,15 +6,15 @@ import { siteConfig } from "@/lib/site";
 const features = [
   {
     title: "練習し放題",
-    body: "スタジオ4部屋を、平日も休日も毎日9:00〜20:00で自由に使用可能。空いていればいつでも音出しできます。",
+    body: "スタジオ3部屋を、平日も休日も毎日9:00〜20:00で自由に使用可能。空いていればいつでも音出しできます。",
   },
   {
     title: "共用楽器が充実",
-    body: "アップライトピアノ、ドラムセット、ウッドベース、エレキベース、ビブラフォンや、サックス・トランペットなどの管楽器まで一通り揃っています。",
+    body: "アップライトピアノ、ドラムセット、コントラバス、エレキベース、ビブラフォンや、サックス、トランペット、クラリネットなどの管楽器まで一通り揃っています。",
   },
   {
     title: "初心者も大歓迎",
-    body: "楽器経験がなくても大丈夫。先輩たちが基礎から丁寧にサポートします。他大学の方や鑑賞好きの見学も歓迎です。",
+    body: "楽器経験がなくても大丈夫。先輩たちが基礎から丁寧にサポートします。まずは見学だけでも大歓迎です。",
   },
   {
     title: "兼部・兼サーOK",
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-28 sm:px-6 sm:pb-20">
           <p className="text-sm tracking-[0.3em] text-amber-100/80">
-            TUAT MODERN JAZZ CLUB
+            TUAT MODERN JAZZ LAB
           </p>
           <h1 className="mt-4 text-[40px] font-bold leading-tight text-white sm:text-5xl md:text-6xl">
             {siteConfig.catchphrase.split("、").map((line, i) => (
@@ -92,7 +92,7 @@ export default function Home() {
             セッションは毎週水・土
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-            セッションとは、その場に集まったメンバーで即興的にバンドを組んで演奏すること。曲や担当楽器はその場で決まるので、初めてでも気軽に参加できます。その日部室にいるメンバーで自由に演奏を楽しんでいます。
+            セッションとは、その場に集まったメンバーで即興的にバンドを組んで演奏すること。曲やメンバーはその場で決まるので、初めてでも気軽に参加できます。その日部室にいるメンバーで自由に演奏を楽しんでいます。
           </p>
           <Link
             href="/schedule"
