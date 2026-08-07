@@ -82,32 +82,42 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Solid (non-blurred) panel — safe to nest inside the sticky header. */}
-        {open && (
-          <nav className="absolute inset-x-0 top-full border-t border-border/80 bg-background md:hidden">
-            <ul className="mx-auto flex max-w-6xl flex-col divide-y divide-border/80 px-4 sm:px-6">
-              {navItems.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className={`block py-4 text-base tracking-wide ${
-                        active ? "text-accent" : "text-foreground/85"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        )}
+        {/*
+          Solid (non-blurred) panel — safe to nest inside the sticky header.
+          Stays mounted so the open/close transition can animate instead of
+          the menu just popping in and out.
+        */}
+        <nav
+          aria-hidden={!open}
+          className={`absolute inset-x-0 top-full origin-top border-t border-border/80 bg-background transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none md:hidden ${
+            open
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
+        >
+          <ul className="mx-auto flex max-w-6xl flex-col divide-y divide-border/80 px-4 sm:px-6">
+            {navItems.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    tabIndex={open ? undefined : -1}
+                    onClick={() => setOpen(false)}
+                    className={`block py-4 text-base tracking-wide ${
+                      active ? "text-accent" : "text-foreground/85"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </header>
 
       {/*
@@ -116,13 +126,13 @@ export default function Header() {
         element nested under a position:sticky ancestor, which makes
         backdrop-filter fail to render there — so it can't live inside header.
       */}
-      {open && (
-        <div
-          aria-hidden
-          onClick={() => setOpen(false)}
-          className="fixed inset-x-0 top-16 bottom-0 z-40 bg-background/50 backdrop-blur-sm md:hidden"
-        />
-      )}
+      <div
+        aria-hidden
+        onClick={() => setOpen(false)}
+        className={`fixed inset-x-0 top-16 bottom-0 z-40 bg-background/50 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none md:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
     </>
   );
 }

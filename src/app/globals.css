@@ -34,3 +34,44 @@ body {
   background: var(--color-accent);
   color: var(--color-background);
 }
+
+/* Page enter/exit transition (see src/app/template.tsx). Keeps the page
+   interactive during the animation and reverts to an instant swap when the
+   browser lacks View Transitions support or the user prefers less motion. */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page-exit) {
+  animation: 120ms ease-in both page-fade-out;
+}
+
+::view-transition-new(.page-enter) {
+  animation: 420ms ease-out both page-fade-slide-up;
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
