@@ -15,7 +15,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="CONTACT"
         title="連絡先"
-        description="見学・入部のご相談、練習日程のお問い合わせなどは、下記のSNSからお気軽にご連絡ください。"
+        description="見学・入部のご相談、練習日程のお問い合わせなどは、公式LINE・SNSのDMからお気軽にご連絡ください。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">

@@ -12,6 +12,7 @@ export const siteConfig = {
 
 export const navItems = [
   { href: "/", label: "Home" },
+  { href: "/session", label: "Session" },
   { href: "/schedule", label: "Schedule" },
   { href: "/access", label: "Access" },
   { href: "/link", label: "Link" },

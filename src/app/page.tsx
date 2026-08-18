@@ -95,10 +95,10 @@ export default function Home() {
             セッションとは、その場に集まったメンバーで即興的にバンドを組んで演奏すること。曲やメンバーはその場で決まるので、初めてでも気軽に参加できます。その日部室にいるメンバーで自由に演奏を楽しんでいます。
           </p>
           <Link
-            href="/schedule"
+            href="/session"
             className="mt-6 inline-block text-sm font-medium text-accent hover:underline"
           >
-            活動日程を詳しく見る →
+            セッションについて詳しく見る →
           </Link>
         </Reveal>
       </section>

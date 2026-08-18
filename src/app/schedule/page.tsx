@@ -37,12 +37,20 @@ export default function SchedulePage() {
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
             見学だけでも大歓迎です。当日その場にいるメンバーで自由に演奏を楽しんでいるので、まずは気軽に部室をのぞいてみてください。詳しい日時や場所は公式SNSでお知らせしています。
           </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block text-sm font-medium text-accent hover:underline"
-          >
-            見学したい方はこちら →
-          </Link>
+          <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2">
+            <Link
+              href="/session"
+              className="text-sm font-medium text-accent hover:underline"
+            >
+              セッションの流れを詳しく見る →
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm font-medium text-accent hover:underline"
+            >
+              見学したい方はこちら →
+            </Link>
+          </div>
         </Reveal>
       </section>
 
