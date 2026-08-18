@@ -21,6 +21,7 @@
   --font-sans: var(--font-noto-sans-jp);
 }
 
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
@@ -31,9 +32,6 @@ body {
   color: var(--color-background);
 }
 
-/* Page enter/exit transition (see src/app/template.tsx). Keeps the page
-   interactive during the animation and reverts to an instant swap when the
-   browser lacks View Transitions support or the user prefers less motion. */
 ::view-transition {
   pointer-events: none;
 }
@@ -69,27 +67,5 @@ body {
   ::view-transition-group(*) {
     animation-duration: 0s !important;
     animation-delay: 0s !important;
-  }
-}
-
-@keyframes scroll-cue-bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(6px);
-    opacity: 0.9;
-  }
-}
-
-.animate-scroll-cue {
-  animation: scroll-cue-bounce 2.2s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-scroll-cue {
-    animation: none;
   }
 }

@@ -34,7 +34,7 @@ const events = [
 export default function Home() {
   return (
     <>
-      <section className="relative flex h-[86vh] min-h-[520px] w-full items-end overflow-hidden">
+      <section className="relative flex h-[86vh] min-h-130 w-full items-end overflow-hidden">
         <Image
           src="/images/bgimg.jpg"
           alt="ジャズライブハウスのステージに置かれたトランペットとドラムセット"
@@ -43,7 +43,7 @@ export default function Home() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/25 to-transparent" />
         <div
           className="absolute inset-x-0 bottom-0 h-24 sm:h-32"
           style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}

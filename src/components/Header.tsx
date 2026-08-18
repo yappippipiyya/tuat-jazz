@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur supports-backdrop-filter:bg-background/70">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link
             href="/"
@@ -122,12 +122,6 @@ export default function Header() {
         </nav>
       </header>
 
-      {/*
-        Blurred backdrop lives as a sibling of <header>, not inside it.
-        iOS Safari mis-resolves the containing block for a position:fixed
-        element nested under a position:sticky ancestor, which makes
-        backdrop-filter fail to render there — so it can't live inside header.
-      */}
       <div
         aria-hidden
         onClick={() => setOpen(false)}
