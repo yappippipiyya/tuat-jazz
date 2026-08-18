@@ -44,7 +44,11 @@ export default function Home() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-28 sm:px-6 sm:pb-20">
+        <div
+          className="absolute inset-x-0 bottom-0 h-24 sm:h-32"
+          style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
+        />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-38 sm:px-6 sm:pb-25">
           <p className="text-sm tracking-[0.3em] text-amber-100/80">
             TUAT MODERN JAZZ LAB
           </p>
@@ -58,24 +62,29 @@ export default function Home() {
           <p className="mt-5 mr-10 max-w-xl text-base leading-relaxed text-white/80 sm:text-base">
             {siteConfig.name}は、楽器経験を問わず音楽が好きな仲間が集まってジャズを演奏するサークルです。
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="#features"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-black transition-opacity hover:opacity-90"
-            >
-              ジャズ研について
-            </Link>
-            <Link
-              href="/schedule"
-              className="rounded-full border border-white/40 px-6 py-3 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/10"
-            >
-              活動日程を見る
-            </Link>
-          </div>
+        </div>
+
+        <div className="absolute bottom-5 right-4 z-10 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/20 px-3 py-1.5 text-xs text-white/70 backdrop-blur-sm sm:right-6">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            className="h-3.5 w-3.5 shrink-0"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"
+            />
+            <circle cx="12" cy="9" r="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className="tracking-wide">工学部 音楽サークル棟</span>
         </div>
       </section>
 
-      <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           {features.map((f, i) => (
             <Reveal key={f.title} delay={i * 100} className="border-l-2 border-accent/60 pl-6">

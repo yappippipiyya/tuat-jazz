@@ -10,9 +10,6 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // Freeze background scroll while the menu is open. No scroll-position
-  // math involved, so there's nothing to restore (and nothing to get wrong)
-  // when the menu closes — whether by link, backdrop tap, or toggle.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -76,7 +73,12 @@ export default function Header() {
             />
             <span
               className={`h-px w-6 bg-foreground transition-transform ${
-                open ? "-translate-y-[3.5px] -rotate-45" : ""
+                open ? "hidden" : ""
+              }`}
+            />
+            <span
+              className={`h-px w-6 bg-foreground transition-transform ${
+                open ? "translate-y-[-3.5px] -rotate-45" : ""
               }`}
             />
           </button>

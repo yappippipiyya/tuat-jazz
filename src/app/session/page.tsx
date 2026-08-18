@@ -23,12 +23,12 @@ const steps = [
   {
     number: "2",
     title: "ソロ",
-    body: "テーマのコード進行に沿って、一人ずつ即興演奏（アドリブ）をしていきます。順番に厳密なルールはありませんが、フロント楽器（トランペット・サックス・クラリネットなど）→ギター・ピアノ→ベースの順で回っていくことが多いです。ドラムは他の楽器を支える役に徹することも、最後にソロを取ることもあります。",
+    body: "テーマのコード進行に沿って、一人ずつ即興演奏（アドリブ）をしていきます。順番に厳密なルールはありませんが、フロント楽器（トランペット・サックス・クラリネットなど）→ギター・ピアノ→ベース（→ドラム）の順で回っていくことが多いです。",
   },
   {
     number: "3",
     title: "バース（トレード）",
-    body: "曲によっては、ソロの後に「バース」と呼ばれるパートが入ることがあります。これは4小節や8小節など短い単位で、ドラムと他の楽器が交互にフレーズを演奏し合うことです。必ず入るわけではなく、曲やその場の流れによって省略されることもあります。",
+    body: "曲によっては、ソロの後に「バース」と呼ばれるパートが入ることがあります。これは4小節や8小節毎に、ドラムと他の楽器が交互にフレーズを演奏し合うことです。",
   },
   {
     number: "4",
@@ -58,7 +58,7 @@ export default function SessionPage() {
           </p>
         </Reveal>
 
-        <div className="relative mt-14 space-y-10 border-l-2 border-border/80 pl-10">
+        <div className="relative mt-14 ml-3 space-y-10 border-l-2 border-border/80 pl-10">
           {steps.map((step, i) => (
             <Reveal key={step.number} delay={i * 80} className="relative">
               <span className="absolute -left-14 top-0 flex h-8 w-8 items-center justify-center rounded-full border-2 border-accent bg-background text-sm font-semibold text-accent">
