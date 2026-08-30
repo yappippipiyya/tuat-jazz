@@ -8,6 +8,8 @@ export const siteConfig = {
   twitterUrl: "https://twitter.com/TUAT_ModernJazz",
   instagramHandle: "@tuat_modernjazz",
   instagramUrl: "https://www.instagram.com/tuat_modernjazz",
+  lineHandle: "LINE 公式アカウント",
+  lineUrl: "https://line.me/R/ti/p/@lrv1282g",
 };
 
 export const navItems = [

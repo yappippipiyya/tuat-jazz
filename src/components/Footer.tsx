@@ -19,6 +19,16 @@ function InstagramIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+function LineIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...props}>
+      <path
+        d="M12 3.5c-5 0-9 3.2-9 7.2 0 3.6 3.2 6.6 7.5 7.1.9.2.8.6.6 1.9l-.2 1c-.1.6.4 1 1 .7 2.6-1.5 5.6-3.5 7.6-6.1 1.2-1.4 1.9-3 1.9-4.5 0-4-4-7.2-9-7.2Z"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
@@ -70,6 +80,19 @@ export default function Footer() {
                 <InstagramIcon className="h-4 w-4 shrink-0" />
                 <span>
                   <span className="text-muted/70">{siteConfig.instagramHandle}</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteConfig.lineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted transition-colors hover:text-accent"
+              >
+                <LineIcon className="h-4 w-4 shrink-0" />
+                <span>
+                  <span className="text-muted/70">{siteConfig.lineHandle}</span>
                 </span>
               </a>
             </li>
