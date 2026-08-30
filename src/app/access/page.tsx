@@ -47,7 +47,7 @@ export default function AccessPage() {
             />
             <div className="overflow-hidden rounded-lg border border-border/80 bg-white p-3">
               <Image
-                src="/images/map-koganei.jpg"
+                src="/images/map-koganei.png"
                 alt="小金井キャンパス内の音楽サークル棟までの案内図"
                 width={1066}
                 height={800}
@@ -61,7 +61,7 @@ export default function AccessPage() {
       <section className="border-t border-border/80 bg-surface">
         <Reveal className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-            府中キャンパス（農学部）
+            府中キャンパス（農学部）（学園祭）
           </h2>
           <p className="mt-2 text-sm text-muted">〒183-8509 東京都府中市幸町3-5-8</p>
           <div className="mt-4 space-y-2 text-sm leading-relaxed text-muted sm:text-base">
@@ -70,22 +70,13 @@ export default function AccessPage() {
             <p>JR武蔵野線「北府中駅」下車、徒歩約12分。</p>
           </div>
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-            学園祭（11月）では、農学部2号館11教室でジャズ喫茶を営業しています。正門を入って本部テントの突き当たりを左折、音楽サークル棟の突き当たりを右折し、ステージを左に見ながら直進。焼き鳥屋の突き当たりを右折して直進した先、左手に見える2号館（ジャズ研の看板が目印）が会場です。
+            学園祭（11月）では、ジャズ喫茶を営業しています。
           </p>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div className="mt-6 grid gap-6">
             <MapEmbed
               address="東京農工大学 府中キャンパス"
               title="東京農工大学 府中キャンパスの地図"
             />
-            <div className="overflow-hidden rounded-lg border border-border/80 bg-white p-3">
-              <Image
-                src="/images/map-fuchu.png"
-                alt="府中キャンパス内の2号館11教室までの案内図"
-                width={1066}
-                height={800}
-                className="h-auto w-full"
-              />
-            </div>
           </div>
         </Reveal>
       </section>
