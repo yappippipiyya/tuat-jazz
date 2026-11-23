@@ -8,6 +8,7 @@
   --accent: #dcab55;
   --accent-2: #b3475a;
   --border: #2c241a;
+  --font-noto-sans-jp: "Noto Sans JP", sans-serif;
 }
 
 @theme inline {
@@ -21,7 +22,6 @@
   --font-sans: var(--font-noto-sans-jp);
 }
 
-
 body {
   background: var(--color-background);
   color: var(--color-foreground);
@@ -34,14 +34,6 @@ body {
 
 ::view-transition {
   pointer-events: none;
-}
-
-::view-transition-old(.page-exit) {
-  animation: 120ms ease-in both page-fade-out;
-}
-
-::view-transition-new(.page-enter) {
-  animation: 420ms ease-out both page-fade-slide-up;
 }
 
 @keyframes page-fade-out {

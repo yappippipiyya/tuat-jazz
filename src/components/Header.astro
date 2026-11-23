@@ -1,0 +1,179 @@
+---
+import { Image } from "astro:assets";
+import faviconImg from "@/assets/images/favicon.png";
+import { navItems, siteConfig } from "@/lib/site";
+
+const normalizePath = (p: string) => (p === "/" ? "/" : p.replace(/\/+$/, ""));
+const currentPath = normalizePath(Astro.url.pathname);
+---
+
+<header
+  transition:animate="none"
+  class="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur supports-backdrop-filter:bg-background/70"
+>
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+    <a
+      href="/"
+      data-logo-link
+      class="flex items-center gap-2 text-lg font-semibold tracking-wide text-foreground"
+    >
+      <Image
+        src={faviconImg}
+        alt=""
+        width={28}
+        height={28}
+        loading="eager"
+        class="h-7 w-7 rounded-full object-cover"
+      />
+      {siteConfig.shortName}
+    </a>
+
+    <nav class="hidden gap-8 md:flex">
+      {
+        navItems.map((item) => {
+          const active =
+            item.href === "/"
+              ? currentPath === "/"
+              : currentPath.startsWith(item.href);
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                "relative text-sm tracking-wide transition-colors hover:text-accent",
+                active ? "text-accent" : "text-foreground/80",
+              ]}
+            >
+              {item.label}
+              {active && (
+                <span class="absolute -bottom-2 left-0 h-px w-full bg-accent" />
+              )}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <button
+      type="button"
+      data-menu-button
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      class="relative z-10 flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+    >
+      <span
+        data-menu-line-1
+        class="h-px w-6 bg-foreground transition-transform"
+      ></span>
+      <span
+        data-menu-line-2
+        class="h-px w-6 bg-foreground transition-transform"
+      ></span>
+      <span
+        data-menu-line-3
+        class="h-px w-6 bg-foreground transition-transform"
+      ></span>
+    </button>
+  </div>
+
+  <!--
+    Solid (non-blurred) panel — safe to nest inside the sticky header.
+    Stays mounted so the open/close transition can animate instead of
+    the menu just popping in and out.
+  -->
+  <nav
+    data-mobile-nav
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-x-0 top-full origin-top -translate-y-2 border-t border-border/80 bg-background opacity-0 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none md:hidden"
+  >
+    <ul class="mx-auto flex max-w-6xl flex-col divide-y divide-border/80 px-4 sm:px-6">
+      {
+        navItems.map((item) => {
+          const active =
+            item.href === "/"
+              ? currentPath === "/"
+              : currentPath.startsWith(item.href);
+          return (
+            <li>
+              <a
+                href={item.href}
+                data-mobile-link
+                tabindex="-1"
+                class:list={[
+                  "block py-4 text-base tracking-wide",
+                  active ? "text-accent" : "text-foreground/85",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>
+
+<div
+  transition:animate="none"
+  data-menu-backdrop
+  aria-hidden="true"
+  class="pointer-events-none fixed inset-x-0 top-16 bottom-0 z-40 bg-background/50 opacity-0 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none md:hidden"
+></div>
+
+<script>
+  function initHeader() {
+    const btn = document.querySelector<HTMLButtonElement>("[data-menu-button]");
+    const mobileNav = document.querySelector<HTMLElement>("[data-mobile-nav]");
+    const backdrop = document.querySelector<HTMLElement>("[data-menu-backdrop]");
+    const line1 = document.querySelector<HTMLElement>("[data-menu-line-1]");
+    const line2 = document.querySelector<HTMLElement>("[data-menu-line-2]");
+    const line3 = document.querySelector<HTMLElement>("[data-menu-line-3]");
+    const logoLink = document.querySelector<HTMLAnchorElement>("[data-logo-link]");
+    const mobileLinks = document.querySelectorAll<HTMLAnchorElement>("[data-mobile-link]");
+
+    if (!btn || !mobileNav || !backdrop || btn.dataset.bound === "true") return;
+    btn.dataset.bound = "true";
+
+    let open = false;
+
+    const setOpen = (next: boolean) => {
+      open = next;
+      document.body.style.overflow = open ? "hidden" : "";
+      btn.setAttribute("aria-expanded", String(open));
+      btn.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+      mobileNav.setAttribute("aria-hidden", String(!open));
+
+      if (open) {
+        mobileNav.classList.remove("pointer-events-none", "-translate-y-2", "opacity-0");
+        mobileNav.classList.add("translate-y-0", "opacity-100");
+        backdrop.classList.remove("pointer-events-none", "opacity-0");
+        backdrop.classList.add("opacity-100");
+        line1?.classList.add("translate-y-[3.5px]", "rotate-45");
+        line2?.classList.add("hidden");
+        line3?.classList.add("translate-y-[-3.5px]", "-rotate-45");
+        mobileLinks.forEach((link) => link.removeAttribute("tabindex"));
+      } else {
+        mobileNav.classList.add("pointer-events-none", "-translate-y-2", "opacity-0");
+        mobileNav.classList.remove("translate-y-0", "opacity-100");
+        backdrop.classList.add("pointer-events-none", "opacity-0");
+        backdrop.classList.remove("opacity-100");
+        line1?.classList.remove("translate-y-[3.5px]", "rotate-45");
+        line2?.classList.remove("hidden");
+        line3?.classList.remove("translate-y-[-3.5px]", "-rotate-45");
+        mobileLinks.forEach((link) => link.setAttribute("tabindex", "-1"));
+      }
+    };
+
+    btn.addEventListener("click", () => setOpen(!open));
+    backdrop.addEventListener("click", () => setOpen(false));
+    logoLink?.addEventListener("click", () => setOpen(false));
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+  }
+
+  document.addEventListener("astro:page-load", initHeader);
+  document.addEventListener("astro:before-preparation", () => {
+    document.body.style.overflow = "";
+  });
+</script>
